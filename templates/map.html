@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+  <title>Hipsografia</title>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+  <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+  <script src="leaflet-dvf.markers.min.js"></script> 
+  <style>
+    #map {
+      position:absolute;
+      top:0;
+      bottom:0;
+      right:0;
+      left:0;
+    }
+  </style>
+</head>
+<body>
+  <div id="map" style=""> </div>
+  <script>
+    var map = L.map('map').setView([-22.905833, -47.060833], 13);
+
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: 'Map data (c) <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    {% for school in schoolList %}
+      var circle = L.circle([{{ school.latitude }}, {{ school.longitude }}], {{ school.vote }}, {
+        {% if school.zone == 33 %}
+          color: 'red',
+          fillColor: 'red',
+        {% else %}
+          color: 'black',
+          fillColor: 'black',
+        {% endif %}
+        fillOpacity: 0.6});
+      {% autoescape off %}
+        circle.bindPopup("{{ school.name }}");
+      {% endautoescape %}
+      map.addLayer(circle)
+    {% endfor %}
+  </script>
+</body>
