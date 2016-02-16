@@ -40,127 +40,21 @@
     <![endif]-->
   </head>
 
-  <body class="hold-transition skin-yellow sidebar-mini">
-    {% if user.is_authenticated %}
-      <div class="wrapper">
-
-        <header class="main-header">
-          <!-- Logo -->
-          <a href="{% url 'index' %}" class="logo">
-            <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>Efg</b></span>
-            <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Efigie</b></span>
-          </a>
-          <!-- Header Navbar: style can be found in header.less -->
-          <nav class="navbar navbar-static-top" role="navigation">
-            <!-- Sidebar toggle button-->
-            <a href="{% url 'index' %}" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-              <span class="sr-only"></span>
-            </a>
-
-            <div class="navbar-custom-menu">
-              <ul class="nav navbar-nav">
-                
-                <!-- Message User-->
-                <li class="dropdown messages-menu">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="label label-success">1</span>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <!-- inner menu: contains the actual data -->
-                      <ul class="menu">
-
-                        <li>
-                          <a href="#">
-                            <h4>
-                              Sales Department
-                            </h4>
-                            <p>Why not buy a new awesome theme?</p>
-                          </a>
-                        </li>
-     
-                      </ul>
-                    </li>
-                    <li class="footer"><a href="#">See All Messages</a></li>
-                  </ul>
-                </li>
-        
-                <!-- User Account: style can be found in dropdown.less -->
-                <li class="dropdown user user-menu">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-user"></i><span class="hidden-xs">{{ request.user.username }}</span>
-                  </a>
-                </li>
-
-              </ul>
-            </div>
-
-          </nav>
-        </header>
-        <!-- Left side column. contains the logo and sidebar -->
-      
-        <aside class="main-sidebar">
-          <section class="sidebar"> <!-- Sidebar user panel -->
-            <ul class="sidebar-menu">
-              <li class="treeview">
-                <a href="">
-                  <i class="fa fa-envelope"></i> <span>{% trans "Mensagem" %}</span>
-                  <i class="fa fa-angle-left pull-right"></i>
-                </a>
-
-                <ul style="display: block;" class="treeview-menu menu-open">
-                  <li><a href="{% url 'messageWrite' %}"><i class="fa fa-pencil-square-o"></i><span>{% trans "Escrever" %}</span></a></li>
-                  <li><a href="{% url 'messageRead' %}"><i class="fa fa-book"></i><span>{% trans "Ler" %}</span></a></li>
-                  <li><a href="{% url 'messageSettings' %}"><i class="fa fa-cog"></i>{% trans "Configuracoes" %}</a></li>
-                </ul>
-              </li>
-
-              
-              
-
-              <li class="treeview">
-                <a href="">
-                  <i class="fa fa-key"></i> <span>{% trans "Chaves RSA" %}</span>
-                  <i class="fa fa-angle-left pull-right"></i>
-                </a>
-
-                <ul style="display: block;" class="treeview-menu menu-open">
-                  <li><a href="{% url 'keyList' %}"><i class="fa fa-list"></i><span>{% trans "Listar" %}</span></a></li>
-                  <li><a href="{% url 'keyGerate' %}"><i class="fa fa-plus"></i><span>{% trans "Gerar" %}</span></a></li>
-                  <li><a href="{% url 'keyImport' %}"><i class="fa fa-upload"></i><span>{% trans "Importar" %}</span></a></li>
-                </ul>
-              </li>
-
-              <li><a href="{% url 'userSettings' %}"><i class="fa fa-wrench"></i><span>{% trans "Configuracoes" %}</span></a></li>
-              <li><a href="{% url 'userLogout' %}"><i class="fa fa-sign-out"></i><span>Logout</span></a></li>
-            </ul>
-          </section> <!-- /.sidebar -->
-        </aside>
-
+  <body class="hold-transition skin-yellow layout-top-nav">
+    <div class="wrapper">
       <div class="content-wrapper">
-
-          <section class="content-header">
-            {% block header %} {% endblock %}
-          </section>
-      {% endif %}
         <section class="content">
           {% block content %} {% endblock %}
         </section>
-      
-      {% if user.is_authenticated %}
       </div>
-        <footer class="main-footer">
-          <div class="pull-right hidden-xs">
-            <b>{% trans "Versao" %}</b> 0.6.123
-          </div>
-          <strong>Copyright &copy; 2015 <a href="/">Efigie</a></strong> {% trans "Todos os direitos reservador" %}.<strong><a href="#"> Paolla Catherine</a></strong>
-        </footer>
+      <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+          <b>{% trans "Versao" %}</b> 0.1.3
+        </div>
+        <strong>Copyright &copy; 2016 <a href="/">Hipsografia</a></strong> {% trans "Todos os direitos reservador" %}.<strong><a href="#"> Paolla Catherine</a></strong>
+      </footer>
+    </div><!-- ./wrapper -->
 
-      </div><!-- ./wrapper -->
-    {% endif %}
 
     <!-- jQuery 2.1.4 -->
     <script src="{% static 'plugins/jQuery/jQuery-2.1.4.min.js' %}"></script>

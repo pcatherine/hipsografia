@@ -1,4 +1,5 @@
 #-*- coding: utf-8 -*-
+# encoding: utf-8
 import csv
 import re
 from htmlentitydefs import name2codepoint
@@ -6,8 +7,9 @@ from htmlentitydefs import name2codepoint
 from geopy.geocoders import Nominatim
 
 class School(object):
-  def __init__(self, name='', address='', latitude=0, longitude=0, zone=0, session='', vote=0):
+  def __init__(self, name='', addressMap='', address='', latitude=0, longitude=0, zone=0, session='', vote=0):
     self.name = name
+    self.addressMap = addressMap
     self.address = address
     self.latitude = latitude
     self.longitude = longitude
@@ -27,16 +29,13 @@ class School(object):
     reader = csv.reader(path, delimiter=';')
     schoolList = []
     for row in reader:
-      print row[1]
-      # school = School(htmlentitydecode(row[1]), htmlentitydecode(row[2]), float(row[3]), float(row[4]), int(row[5]), htmlentitydecode(row[6]), (int(row[7])/10) )
       geolocator = Nominatim()
-      location = geolocator.geocode(row[2])
-      # print(location.address)
-      print(location.latitude, location.longitude)
-      print(location.raw)
-      school = School(htmlentitydecode(row[1]), htmlentitydecode(row[2]), location.latitude, location.longitude, int(row[3]), htmlentitydecode(row[4]), (int(row[5])/10) )
+      # win
+      # location = geolocator.geocode( str(row[2]).decode('latin-1').encode("utf-8") , timeout=10)
+      # ubuntu
+      print row[2]
+      location = geolocator.geocode( str(row[2]), timeout=10) 
+
+      school = School(str(row[1]).decode('latin-1').encode("utf-8"), str(row[2]).decode('latin-1').encode("utf-8"), str(row[3]).decode('latin-1').encode("utf-8"), location.latitude, location.longitude, int(row[4]), str(row[5]).decode('latin-1').encode("utf-8"), (int(row[6])/10))
       schoolList.append(school)
     return schoolList
-
-def htmlentitydecode(s):
-  return re.sub('&(%s);' % '|'.join(name2codepoint),lambda m: unichr(name2codepoint[m.group(1)]), s)

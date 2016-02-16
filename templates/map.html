@@ -29,9 +29,12 @@
         {% if school.zone == 33 %}
           color: 'red',
           fillColor: 'red',
-        {% else %}
+        {% elif school.zone == 274 %}
           color: 'black',
           fillColor: 'black',
+        {% else %}
+          color: 'green',
+          fillColor: 'green',
         {% endif %}
         fillOpacity: 0.6});
       {% autoescape off %}
