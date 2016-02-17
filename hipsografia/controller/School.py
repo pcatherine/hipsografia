@@ -1,9 +1,6 @@
 #-*- coding: utf-8 -*-
 # encoding: utf-8
 import csv
-import re
-from htmlentitydefs import name2codepoint
-
 from geopy.geocoders import Nominatim
 
 class School(object):
@@ -29,13 +26,22 @@ class School(object):
     reader = csv.reader(path, delimiter=';')
     schoolList = []
     for row in reader:
-      geolocator = Nominatim()
-      # win
-      # location = geolocator.geocode( str(row[2]).decode('latin-1').encode("utf-8") , timeout=10)
-      # ubuntu
-      print row[2]
-      location = geolocator.geocode( str(row[2]), timeout=10) 
-
-      school = School(str(row[1]).decode('latin-1').encode("utf-8"), str(row[2]).decode('latin-1').encode("utf-8"), str(row[3]).decode('latin-1').encode("utf-8"), location.latitude, location.longitude, int(row[4]), str(row[5]).decode('latin-1').encode("utf-8"), (int(row[6])/10))
-      schoolList.append(school)
+      if len(row) > 0:
+        if row[0].isdigit():
+          geolocator = Nominatim()
+          # Padrão vindo de arquivos csv do Windowns
+          location = geolocator.geocode(str(row[2]).decode('latin-1').encode("utf-8") , timeout=10)
+          if location == None:
+            # Padrão vindo de arquivos csv do Ubuntu
+            location = geolocator.geocode( str(row[2]), timeout=10)
+            if location == None:
+              print row[0]+ row[1]
+            else:
+              school = School(str(row[1]).decode('latin-1').encode("utf-8"), str(row[2]).decode('latin-1').encode("utf-8"), str(row[3]).decode('latin-1').encode("utf-8"), location.latitude, location.longitude, int(row[4]), str(row[5]).decode('latin-1').encode("utf-8"), 60)#int(row[6]))
+              schoolList.append(school)
+          else:
+            school = School(str(row[1]).decode('latin-1').encode("utf-8"), str(row[2]).decode('latin-1').encode("utf-8"), str(row[3]).decode('latin-1').encode("utf-8"), location.latitude, location.longitude, int(row[4]), str(row[5]).decode('latin-1').encode("utf-8"), 60)#int(row[6]))
+            schoolList.append(school)
+        else:
+          print row[0]
     return schoolList
