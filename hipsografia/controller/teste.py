@@ -6,11 +6,11 @@
 # import sys
 
 # print sys.getdefaultencoding()
-# from geopy.geocoders import Nominatim
+from geopy.geocoders import Nominatim
 
-# geolocator = Nominatim()
-# location = geolocator.geocode('Rua Dom Luís Antônio de Sousa, 89, Campinas - SP', timeout = 10) 
-# print(location.latitude, location.longitude) 
+geolocator = Nominatim()
+location = geolocator.geocode('Av das Amoreiras, 6452 - Campinas - SP', timeout = 10) 
+print(location.latitude, location.longitude) 
 # location = geolocator.geocode('AV JÚLIO DE MESQUITA, 840, Campinas - SP')
 # print(location.latitude, location.longitude)
 # location = geolocator.geocode('Rua Visconde de Taunay, 250, Campinas - SP')
@@ -50,7 +50,7 @@
 #         '''
 #         return alphabet[shift:] + alphabet[:shift]
 
-print '565'.isdigit()
+# print '565'.isdigit()
  
 # class Vigenere(Cipher):
 #     """ Cifra de Vigenere """

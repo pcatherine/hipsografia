@@ -1,6 +1,8 @@
-<!DOCTYPE html>
-<head>
-  <title>Hipsografia</title>
+{% extends "_template.html" %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block header %} 
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
   <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
   <script src="leaflet-dvf.markers.min.js"></script> 
@@ -13,8 +15,9 @@
       left:0;
     }
   </style>
-</head>
-<body>
+{% endblock %}
+
+{% block content %} 
   <div id="map" style=""> </div>
   <script>
     var map = L.map('map').setView([-22.905833, -47.060833], 13);
@@ -43,4 +46,4 @@
       map.addLayer(circle)
     {% endfor %}
   </script>
-</body>
+{% endblock %}
