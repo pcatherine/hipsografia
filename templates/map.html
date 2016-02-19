@@ -27,19 +27,30 @@
         attribution: 'Map data (c) <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
     }).addTo(map);
 
+    Copyright &copy; 2016 <a href="/">Hipsografia</a></strong> {% trans "Todos os direitos reservador" %}.<strong><a href="#"> Paolla Catherine
+
     {% for school in schoolList %}
       var circle = L.circle([{{ school.latitude }}, {{ school.longitude }}], {{ school.vote }}, {
         {% if school.zone == 33 %}
-          color: 'red',
-          fillColor: 'red',
+          color: '#FF0000',
+          fillColor: '#FF0000',
         {% elif school.zone == 274 %}
-          color: 'black',
-          fillColor: 'black',
+          color: '#FFD700',
+          fillColor: '#FFD700',
         {% elif school.zone == 275 %}
+          color: '#0000CD',
+          fillColor: '#0000CD',
+        {% elif school.zone == 378 %}
+          color: '#FF1493',
+          fillColor: '#FF1493',
+        {% elif school.zone == 379 %}
+          color: '#FF4500',
+          fillColor: '#FF4500',
+        {% elif school.zone == 380 %}
           color: '#006400',
           fillColor: '#006400',
         {% endif %}
-        fillOpacity: 0.6});
+        fillOpacity: 0.75});
       {% autoescape off %}
         circle.bindPopup("{{ school.name }}");
       {% endautoescape %}
