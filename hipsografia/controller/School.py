@@ -21,7 +21,7 @@ class School(object):
   #   + 'Zona: ' + self._zona + '/n/r'
   #   + 'Sessao: ' + self._sessao + '/n/r'
 
-
+  #alterar
   def readCSV(self, path):
     reader = csv.reader(path, delimiter=';')
     schoolList = []
@@ -45,3 +45,7 @@ class School(object):
         else:
           print row[0]
     return schoolList
+
+
+
+

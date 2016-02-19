@@ -13,25 +13,6 @@
 # print(location.latitude, location.longitude) 
 
 
-import mechanize 
-from bs4 import BeautifulSoup
-import json
-
-
-try:
-  browser = mechanize.Browser()
-  browser.set_handle_robots(False)
-  browser.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:43.0) Gecko/20100101 Debian 3.2.73-2+deb7u1 Firefox/43.0')]
-  htmltext = browser.open('http://maps.google.com.br/maps/api/geocode/json?address=250+neuza+goulart+brizola,campinas,brasil&sensor=false')
-  soup = BeautifulSoup(htmltext, "html.parser")
-
-  ola1 = json.loads(str(soup))
-  print ola1['results'][0]['geometry']['location']['lat']
-  print ola1['results'][0]['geometry']['location']['lng']
-
-except Exception, e:
-  print e
-
 
 
 
