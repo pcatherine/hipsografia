@@ -28,11 +28,18 @@ class School(object):
   def readCSV(self, path):
     reader = csv.reader(path, delimiter=';')
     schoolList = []
+    columns = 0
     try: 
       for row in reader:
-        if len(row) > 0:
+        columns = len(row)
+        if columns > 0:
           if row[0].isdigit():
-            lat, lng = Util.geocoding(row[2], row[3], row[4], row[5])
+
+            if columns > 9:
+              lat, lng = row[9], row[10]
+            else:
+              lat, lng = 0.0,0.0 #Util.geocoding(row[2], row[3], row[4], row[5])
+            
             if isinstance(lat, float) and isinstance(lng, float): 
               school = School(str(row[1]).decode('latin-1').encode("utf-8"), 
                 str(row[2]).decode('latin-1').encode("utf-8"), 
@@ -44,13 +51,19 @@ class School(object):
                 str(row[7]).decode('latin-1').encode("utf-8"), 
                 int(row[8]))#int(row[6]))
               schoolList.append(school)
-    except:
+    except Exception, e:
       print 'deu ruim'
+      print e
+    
+    if columns <= 9:
+      writeCSV(schoolList)
     return schoolList
 
 
-  def writeCSV(self, schoolList):
-    with open('test1.csv', 'wb') as testfile:
-        csv_writer = csv.writer(testfile, delimiter=';')
-        for y in xrange(11):
-            csv_writer.writerow([x[y] for x in schoolList])
+def writeCSV(schoolList):
+  with open("paolla.csv", "w+") as output_file:
+    csv_out = csv.writer(output_file, delimiter=';', lineterminator='\n')
+    for school in schoolList:
+      csv_out.writerow([school.name.encode("utf-8"), school.address.encode("utf-8"), 
+        school.city, school.state, school.country, school.zone, 
+        school.session, school.vote, school.latitude, school.longitude])

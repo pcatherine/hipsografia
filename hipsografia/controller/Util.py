@@ -25,11 +25,3 @@ def addressToRequest(address):
    return number.strip()+'+'+'+'.join(street.split(' '))
 
 
-def teste(address):
-   with open('test1.csv', 'wb') as testfile:
-      csv_writer = csv.writer(testfile)
-      for y in range(length):
-         csv_writer.writerow([x[y] for x in hello])
-
-
-
