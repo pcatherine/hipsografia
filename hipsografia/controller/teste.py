@@ -13,15 +13,29 @@
 # print(location.latitude, location.longitude) 
 
 
-import cchardet
-data = 'éá'
+# http://www.emdec.com.br/ABusInf/consultarlinha.asp?linha=353&Ed=1&consulta=1
+# http://www.emdec.com.br/ABusInf/detalhelinha.asp?TpDiaID=0&CdPjOID=3436
+# import time
+  
+# print "Start : %s" % time.ctime()
+# time.sleep(0.5)
+# print "End : %s" % time.ctime()
 
-encoding = cchardet.detect(data)['encoding']
 
-if new_coding.upper() != encoding.upper():
-  data = data.decode(encoding, data).encode(new_coding)
+columns = 9
 
-return data
+lat, lng = [(9.0, 10.0) , (0.0,0.0 )] [ columns > 9 ]
+print lat, lng
+
+# import cchardet
+# data = 'éá'
+
+# encoding = cchardet.detect(data)['encoding']
+
+# if new_coding.upper() != encoding.upper():
+#   data = data.decode(encoding, data).encode(new_coding)
+
+# return data
 
 
 # import csv
