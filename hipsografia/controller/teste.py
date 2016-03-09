@@ -21,11 +21,46 @@
 # time.sleep(0.5)
 # print "End : %s" % time.ctime()
 
+# import os
+# print os.environ["HOME"]
+# columns = 8
+# lat, lng = ( (float(9.9), float(10.0) ) , (0.0 , 0.0) ) [ columns <= 9 ]
+# print lat, lng
+# from django.utils.encoding import smart_str, smart_unicode
 
-columns = 9
 
-lat, lng = [(9.0, 10.0) , (0.0,0.0 )] [ columns > 9 ]
-print lat, lng
+# print nome
+# print nome.encode('ASCII','ignore').decode('ASCII')
+
+# from unicodedata import normalize
+
+# nome = 'éóá'
+
+# print normalize('NFKD', nome).encode('ASCII','ignore').decode('ASCII')
+
+
+# from unicodedata import normalize
+
+
+# print str('\xaa').encode('ascii')
+
+# print normalize('NFKD', '\xaa'.decode('utf-8')).encode('ASCII', 'ignore').decode('ASCII')
+
+  
+# def removerCaracteresEspeciais (text) :
+#   """
+#   Método para remover caracteres especiais do texto
+#   """
+#   return 
+
+
+# print removerCaracteresEspeciais(palavra)
+# print(palavra)
+
+# columns = 9
+
+# lat, lng = [(9.0, 10.0) , (0.0,0.0 )] [ columns > 9 ]
+# print lat, lng
 
 # import cchardet
 # data = 'éá'

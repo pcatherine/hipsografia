@@ -65,3 +65,6 @@ target/
 *.csv
 *.xls
 ColegiosEleitoraisASeparar.txt
+
+# Secret Tokens
+Environment.py

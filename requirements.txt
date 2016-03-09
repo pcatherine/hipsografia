@@ -1,1 +1,4 @@
 Django==1.8.2
+beautifulsoup4==4.4.1
+instapush==0.1.2
+mechanize==0.2.5

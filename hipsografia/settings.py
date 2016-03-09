@@ -85,8 +85,8 @@ WSGI_APPLICATION = 'hipsografia.wsgi.application'
 #   'default': {
 #     'ENGINE': 'django.db.backends.postgresql_psycopg2',   # 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
 #     'NAME': 'hipsografia',
-#     'USER': 'paolla',                 # Not used with sqlite3.
-#     'PASSWORD': 'paolla',         # Not used with sqlite3.
+#     'USER': 'ddd',                 # Not used with sqlite3.
+#     'PASSWORD': 'ddd',         # Not used with sqlite3.
 #     'HOST': 'localhost',   # Set to empty string for localhost. Not used with sqlite3.
 #     'PORT': '5432',                     # Set to empty string for default. Not used with sqlite3.
 #   }
